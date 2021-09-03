@@ -1,14 +1,28 @@
 <h1>Sign Up</h1>
 
+<% if logged_in? %>
+<p style="color:red">You are already logged in.  Please <%= link_to "Logout", {:controller=> "sessions", :action=> "destroy"}, :method => :delete %>
+first if you are not <%= current_user.name %> </p>
+
+<% else %>
+
 <%= form_with model: @user, local: true do |f|%>
   <%= f.label :name%><br>
-  <%= f.text_field :name%><br>
+  <%= f.text_field :name%><br><br>
 <%= f.label :email%><br>
-  <%= f.email_field :email%><br>
+  <%= f.email_field :email%><br><br>
   <%= f.label :password%><br>
-  <%= f.password_field :password%><br>
-  <%= f.label :rising%><br>
- <%= f.text_field :rising%><br>
-
+  <%= f.password_field :password%><br><br>
+  <%= f.label :rising, "Rising Sign"%><br>
+ <%= f.select :rising, options_for_select([ ["Not sure",""], ["Aries", "Aries"], ["Taurus", "Taurus"], ["Gemini", "Gemini"],
+                 ["Cancer", "Cancer"], ["Leo", "Leo"],
+                  ["Virgo", "Virgo"], ["Libra", "Libra"], ["Scorpio", "Scorpio"], 
+                  ["Sagittarius","Sagittarius"],  ["Capricorn","Capricorn"],  
+                  ["Aquarius", "Aquarius"], 
+                  ["Pisces", "Pisces"]
+               
+                 ] )  %><br>
+<br><br>
   <%= f.submit %>
+<% end %>
 <% end %>
