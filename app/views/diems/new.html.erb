@@ -1,1 +1,28 @@
-<h1>New Practice for  <%= current_user.name %> </h1>
+<h1>New Journal Date <%= current_user.name %> </h1>
+
+<%= form_for [@diems] do |f|%>
+ 
+
+  <%= f.label :date %><br>
+  <%= f.date_select  :custdate %><br>
+  <%= f.label :moonsign, "What sign is the Moon in today?" %><br>
+ <%= f.select :moonsign, options_for_select([ ["Not sure",""], ["Aries", "Aries"], ["Taurus", "Taurus"], ["Gemini", "Gemini"],
+                 ["Cancer", "Cancer"], ["Leo", "Leo"],
+                  ["Virgo", "Virgo"], ["Libra", "Libra"], ["Scorpio", "Scorpio"], 
+                  ["Sagittarius","Sagittarius"],  ["Capricorn","Capricorn"],  
+                  ["Aquarius", "Aquarius"], 
+                  ["Pisces", "Pisces"]
+               
+                 ] )  %><br>
+<br><br>
+<%=f.label :moonstat, "Status of the Moon"%>
+<%= f.select :moonstat, options_for_select([ ["Not sure",""], ["New", "New"], ["Waxing", "Waxing"], ["Full", "Full"], ["Waning", "Waning"]
+                
+                 ] )  %><br>
+<br><br>
+
+
+
+
+  <%= f.submit %>
+<% end %>  

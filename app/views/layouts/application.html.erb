@@ -22,7 +22,7 @@
 <% if logged_in? %>
   <td><%= link_to "Edit Profile", edit_user_path(current_user) %> </td>
 
-  <td><%= link_to "New Date Entry", diems_path %></td>
+  <td><%= link_to "New Date Entry", new_diem_path %></td>
  
   <td><%= link_to "logout", {:controller=> "sessions", :action=> "destroy"}, :method => :delete %></td>
   <% end %>
