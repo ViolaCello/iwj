@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :dreams
   resources :practices
   resources :diems
   resources :users
