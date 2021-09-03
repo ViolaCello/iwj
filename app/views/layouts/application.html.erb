@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Iwj</title>
+    <title>Inner Work Journal</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,26 @@
   </head>
 
   <body>
+
+<table border="5" width="100%" 
+           align="center">
+
+<tr bgcolor="lightblue" align="center">
+<td><%= link_to "Home", home_path %></td>
+
+
+<% if logged_in? %>
+  <td><%= link_to "Edit Profile", edit_user_path(current_user) %> </td>
+ 
+  <td><%= link_to "logout", {:controller=> "sessions", :action=> "destroy"}, :method => :delete %></td>
+  <% end %>
+
+</table>
+
+<% if logged_in? %><h5>Logged in as: <%= current_user.name %></h5><% end %>
+
+
+
     <%= yield %>
   </body>
 </html>
